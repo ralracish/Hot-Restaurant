@@ -28,7 +28,7 @@
               <h3><strong>Current Reservations</strong></h3>
             </div>
             <div class="card-body">
-              <h2 id="list"></h2>
+              <h3 id="list"></h3>
               <div id="list-group-item">
 
               </div>
@@ -40,12 +40,9 @@
               <h3><strong>Waiting List</strong></h3>
             </div>
             <div class="card-body">
-              <h2 id="list"></h2>
+              <h2 id="waitList"></h2>
               <div id="list-group-item">
-                <h3><strong>ID:</strong> <span id="waiting-id"></span></h3>
-                <h3><strong>Name:</strong> <span id="waiting-name"></span></h3>
-                <h3><strong>Email:</strong> <span id="waiting-email"></span></h3>
-                <h3><strong>Phone:</strong> <span id="waiting-phone"></span></h3>
+
               </div>
             </div>
           </div>
@@ -60,13 +57,13 @@
   </div>
 
   <script type="text/javascript">
-  function getTable() {
+  function getReservations() {
     $.ajax({ url: "/api/reservations", method: "GET" })
       .then(function(reservationData) {
         console.log(reservationData);
-        for (var i = 0; i < reservationData.length; i++) {
-          var list = $("#list");
-          var listItem = $("<li class='list-group-item mt-4'>");
+        for (let i = 0; i < reservationData.length; i++) {
+          let list = $("#list");
+          let listItem = $("<li class='list-group-item mt-4'>");
           listItem.append(
             $("<h2>").text("ID: " + reservationData[i].uniqueID),
             $("<h2>").text("Name: " + reservationData[i].name),
@@ -77,7 +74,25 @@
         }
       });
   }
-  getTable();
+  function getWaiting() {
+    $.ajax({ url: "/api/waiting", method: "GET" })
+      .then(function(waitingData) {
+        console.log(waitingData);
+        for (let i = 0; i < waitingData.length; i++) {
+          let list = $("#waitList");
+          let listItem = $("<li class='list-group-item mt-4'>");
+          listItem.append(
+            $("<h2>").text("ID: " + waitingData[i].uniqueID),
+            $("<h2>").text("Name: " + waitingData[i].name),
+            $("<h2>").text("Email: " + waitingData[i].email),
+            $("<h2>").text("Phone: " + waitingData[i].phone)
+          );
+          list.append(listItem);
+        }
+      });
+  }
+  getReservations();
+  getWaiting();
 
   </script>
 </body>
