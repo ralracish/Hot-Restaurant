@@ -30,10 +30,10 @@ const Reservation = function (name, email, phone, uniqueID) {
 const reservationsList = [];
 const waitingList = [];
 
-reservationsList.push({ "name": "Desmond", "email": "dm@bootcamp.com", "phone": "919-260-8858", "uniqueID": "5200" })
-reservationsList.push({ "name": "Marcia", "email": "mm@bootcamp.com", "phone": "919-555-5555", "uniqueID": "5300" })
-waitingList.push({ "name": "Desmond", "email": "dm@bootcamp.com", "phone": "919-260-8858", "uniqueID": "5200" })
-waitingList.push({ "name": "Marcia", "email": "mm@bootcamp.com", "phone": "919-555-5555", "uniqueID": "5300" })
+reservationsList.push({ "name": "Desmond", "email": "dm@bootcamp.com", "phone": "919-260-8858", "uniqueID": "5200", "feedback": "reservation", "position": 1 })
+reservationsList.push({ "name": "Marcia", "email": "mm@bootcamp.com", "phone": "919-555-5555", "uniqueID": "5300", "feedback": "reservation", "position": 2 })
+waitingList.push({ "name": "Desmond", "email": "dm@bootcamp.com", "phone": "919-260-8858", "uniqueID": "5200", "feedback": "waiting", "position": 1 })
+waitingList.push({ "name": "Marcia", "email": "mm@bootcamp.com", "phone": "919-555-5555", "uniqueID": "5300", "feedback": "waiting", "position": 2 })
 
 app.get("/", function (req, res) {
     res.sendFile(path.join(__dirname, "home.html"));
