@@ -79,7 +79,7 @@
         $("#add-btn").on("click", function (event) {
           event.preventDefault();
 
-          console.log($("#name").value().trim());
+          console.log($("#name").val().trim());
           const reservation = {
             name: $("#name").val().trim(),
             phone: $("#phone").val().trim(),
