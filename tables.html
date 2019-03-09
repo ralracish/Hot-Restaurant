@@ -71,9 +71,7 @@
           var list = $("#list");
           var listItem = $("<li class='list-group-item mt-4'>");
           listItem.append(
-            $("<h2>").text("Reservation ID: " + (i)),
-            $("<hr>"),
-            $("<h2>").text("ID: " + reservationData[i].id),
+            $("<h2>").text("ID: " + reservationData[i].uniqueID),
             $("<h2>").text("Name: " + reservationData[i].name),
             $("<h2>").text("Email: " + reservationData[i].email),
             $("<h2>").text("Phone: " + reservationData[i].phone)
