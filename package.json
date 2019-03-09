@@ -1,0 +1,24 @@
+{
+  "name": "Hot-Restaurant",
+  "version": "1.0.0",
+  "description": "Hot Restaurant Reservation System",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ralracish/Hot-Restaurant.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ralracish/Hot-Restaurant/issues"
+  },
+  "homepage": "https://github.com/ralracish/Hot-Restaurant#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
