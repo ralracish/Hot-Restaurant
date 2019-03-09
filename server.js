@@ -31,6 +31,8 @@ const reservationsList = [];
 const waitingList = [];
 
 reservationsList.push({ "name": "Desmond", "email": "dm@bootcamp.com", "phone": "919-260-8858", "uniqueID": "5200" })
+reservationsList.push({ "name": "Marcia", "email": "mm@bootcamp.com", "phone": "919-555-5555", "uniqueID": "5300" })
+waitingList.push({ "name": "Desmond", "email": "dm@bootcamp.com", "phone": "919-260-8858", "uniqueID": "5200" })
 waitingList.push({ "name": "Marcia", "email": "mm@bootcamp.com", "phone": "919-555-5555", "uniqueID": "5300" })
 
 app.get("/api/reservations", function (req, res) {
