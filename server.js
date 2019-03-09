@@ -49,7 +49,12 @@ app.get("/api/characters/:character", function (req, res) {
 app.post("/api/characters", function (req, res) {
     // req.body hosts is equal to the JSON post sent from the user
     // This works because of our body parsing middleware
-    var newcharacter = req.body;
+
+    var reqbody = json.stringify(req.body);
+
+    
+
+
 
     // Using a RegEx Pattern to remove spaces from newCharacter
     // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
@@ -60,6 +65,15 @@ app.post("/api/characters", function (req, res) {
     characters.push(newcharacter);
 
     res.json(newcharacter);
+
+    //read the object and put it in array
+    
+    reservation= new Reservation();
+    if(reservationsList.length<5){
+        reservationsList.push(reservation);   
+    }else{
+        waitingList.push(reservation);  
+    }
 });
 
 app.listen(PORT, function () {
