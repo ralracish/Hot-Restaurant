@@ -14,6 +14,14 @@ const Reservation = function (name, email, phone, uniqueID) {
     this.phone = phone;
     this.uniqueID = uniqueID;
     this.reservationID = new Date().getTime();
+    this.status = () => {
+        if (reservationsList.length < 5) {
+            this.feedback = "reserved";
+        } else {
+            this.feedback = "waiting";
+        };
+    };
+    this.status();
 };
 
 //push the reservation into reservationsList or waitingList
@@ -47,24 +55,17 @@ const waitingList = [];
 // });
 
 app.post("/", function (req, res) {
-    
-   // console.log(req.body);
-    // req.body hosts is equal to the JSON post sent from the user
     var reqbody = req.body;
- 
-    reservation = new Reservation(reqbody.name,reqbody.phone,reqbody.email,reqbody.uniqueID);
+    reservation = new Reservation(reqbody.name, reqbody.email, reqbody.phone, reqbody.uniqueID);
     if (reservationsList.length < 5) {
         reservationsList.push(reservation);
-        
-        var feedback="You are on the reservation list";
-        reservationsList.push(feedback);
         console.log(reservationsList);
     } else {
         waitingList.push(reservation);
-        var feedback="You are on the waiting list";
+        console.log(waitingList);
     }
     res.json(reservation);
-    
+
 
 });
 
