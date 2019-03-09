@@ -17,8 +17,10 @@ const Reservation = function (name, email, phone, uniqueID) {
     this.status = () => {
         if (reservationsList.length < 5) {
             this.feedback = "reserved";
+            this.position = (reservationsList.length) + 1;
         } else {
             this.feedback = "waiting";
+            this.position = (waitingList.length) + 1;
         };
     };
     this.status();
@@ -28,31 +30,16 @@ const Reservation = function (name, email, phone, uniqueID) {
 const reservationsList = [];
 const waitingList = [];
 
-// app.get("/", function (req, res) {
-//     res.sendFile(path.join(__dirname, "view.html"));
-// });
+reservationsList.push({ "name": "Desmond", "email": "dm@bootcamp.com", "phone": "919-260-8858", "uniqueID": "5200" })
+waitingList.push({ "name": "Marcia", "email": "mm@bootcamp.com", "phone": "919-555-5555", "uniqueID": "5300" })
 
-// app.get("/add", function (req, res) {
-//     res.sendFile(path.join(__dirname, "add.html"));
-// });
+app.get("/api/reservations", function (req, res) {
+    return res.json(reservationsList);
+});
 
-// app.get("/api/characters", function (req, res) {
-//     return res.json(characters);
-// });
-
-// app.get("/api/characters/:character", function (req, res) {
-//     var chosen = req.params.character;
-
-//     console.log(chosen);
-
-//     for (var i = 0; i < characters.length; i++) {
-//         if (chosen === characters[i].routeName) {
-//             return res.json(characters[i]);
-//         }
-//     }
-
-//     return res.json(false);
-// });
+app.get("/api/waiting", function (req, res) {
+    return res.json(waitingList);
+});
 
 app.post("/", function (req, res) {
     var reqbody = req.body;
@@ -65,8 +52,6 @@ app.post("/", function (req, res) {
         console.log(waitingList);
     }
     res.json(reservation);
-
-
 });
 
 app.listen(PORT, function () {
