@@ -65,10 +65,10 @@
           let list = $("#list");
           let listItem = $("<li class='list-group-item mt-4'>");
           listItem.append(
-            $("<h2>").text("ID: " + reservationData[i].uniqueID),
-            $("<h2>").text("Name: " + reservationData[i].name),
-            $("<h2>").text("Email: " + reservationData[i].email),
-            $("<h2>").text("Phone: " + reservationData[i].phone)
+            $("<h3>").text("ID: " + reservationData[i].uniqueID),
+            $("<h3>").text("Name: " + reservationData[i].name),
+            $("<h3>").text("Email: " + reservationData[i].email),
+            $("<h3>").text("Phone: " + reservationData[i].phone)
           );
           list.append(listItem);
         }
@@ -82,10 +82,10 @@
           let list = $("#waitList");
           let listItem = $("<li class='list-group-item mt-4'>");
           listItem.append(
-            $("<h2>").text("ID: " + waitingData[i].uniqueID),
-            $("<h2>").text("Name: " + waitingData[i].name),
-            $("<h2>").text("Email: " + waitingData[i].email),
-            $("<h2>").text("Phone: " + waitingData[i].phone)
+            $("<h3>").text("ID: " + waitingData[i].uniqueID),
+            $("<h3>").text("Name: " + waitingData[i].name),
+            $("<h3>").text("Email: " + waitingData[i].email),
+            $("<h3>").text("Phone: " + waitingData[i].phone)
           );
           list.append(listItem);
         }
