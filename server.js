@@ -47,17 +47,24 @@ const waitingList = [];
 // });
 
 app.post("/", function (req, res) {
-    console.log('here');
-    console.log(req.body);
+    
+   // console.log(req.body);
     // req.body hosts is equal to the JSON post sent from the user
-    var reqbody = JSON.stringify(req.body);
-    reservation = new Reservation(reqbody);
+    var reqbody = req.body;
+ 
+    reservation = new Reservation(reqbody.name,reqbody.phone,reqbody.email,reqbody.uniqueID);
     if (reservationsList.length < 5) {
         reservationsList.push(reservation);
+        
+        var feedback="You are on the reservation list";
+        reservationsList.push(feedback);
+        console.log(reservationsList);
     } else {
         waitingList.push(reservation);
+        var feedback="You are on the waiting list";
     }
     res.json(reservation);
+    
 
 });
 
