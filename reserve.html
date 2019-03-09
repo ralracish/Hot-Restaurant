@@ -16,8 +16,8 @@
 
   <div class="container">
     <div class="jumbotron">
-        <h1 style="text-align: center;">Hot Restaurant</h1>
-        <h3 style="text-align: center;">We Only Have 5 Tables! Reserve Your Table Now!</h3>
+      <h1 style="text-align: center;">Hot Restaurant</h1>
+      <h3 style="text-align: center;">We Only Have 5 Tables! Reserve Your Table Now!</h3>
       <hr>
       <a href="/">
         <button class="btn btn-danger btn-lg" id="my-centered_buttons">
@@ -68,9 +68,12 @@
           </div>
         </div>
         <div class="row">
-                <div class="col-lg-12">
-                    <a href=API Table Link>API Table Link</a> | <a href=API Wait List>API Wait List</a>
+          <div class="col-lg-12">
+            <a href=API Table Link>API Table Link</a> | <a href=API Wait List>API Wait List</a>
+          </div>
+        </div>
       </div>
+<<<<<<< HEAD
     </div>
   </div>
 
@@ -92,10 +95,31 @@
           console.log(data);
           alert("Adding reservation...");
         });
+=======
+>>>>>>> b26f92f0100ed1823f5f34c5c16001c40fd449ff
 
-    });
+      <script type="text/javascript">
+        // Question: What does this code do?
+        $("#add-btn").on("click", function (event) {
+          event.preventDefault();
 
-  </script>
+          const reservation = {
+            name: $("#name").val().trim(),
+            phone: $("#phone").val().trim(),
+            email: $("#email").val().trim(),
+            uniqueID: $("#uniqueID").val().trim()
+          };
+
+          // Question: What does this code do??
+          $.post("/", reservation)
+            .then(function (data) {
+              console.log(data);
+              alert("Adding reservation...");
+            });
+
+        });
+
+      </script>
 </body>
 
 </html>
