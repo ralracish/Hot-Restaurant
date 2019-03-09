@@ -20,60 +20,45 @@ const Reservation = function (name, email, phone, uniqueID) {
 const reservationsList = [];
 const waitingList = [];
 
-app.get("/", function (req, res) {
-    res.sendFile(path.join(__dirname, "view.html"));
-});
+// app.get("/", function (req, res) {
+//     res.sendFile(path.join(__dirname, "view.html"));
+// });
 
-app.get("/add", function (req, res) {
-    res.sendFile(path.join(__dirname, "add.html"));
-});
+// app.get("/add", function (req, res) {
+//     res.sendFile(path.join(__dirname, "add.html"));
+// });
 
-app.get("/api/characters", function (req, res) {
-    return res.json(characters);
-});
+// app.get("/api/characters", function (req, res) {
+//     return res.json(characters);
+// });
 
-app.get("/api/characters/:character", function (req, res) {
-    var chosen = req.params.character;
+// app.get("/api/characters/:character", function (req, res) {
+//     var chosen = req.params.character;
 
-    console.log(chosen);
+//     console.log(chosen);
 
-    for (var i = 0; i < characters.length; i++) {
-        if (chosen === characters[i].routeName) {
-            return res.json(characters[i]);
-        }
-    }
+//     for (var i = 0; i < characters.length; i++) {
+//         if (chosen === characters[i].routeName) {
+//             return res.json(characters[i]);
+//         }
+//     }
 
-    return res.json(false);
-});
+//     return res.json(false);
+// });
 
-app.post("/api/characters", function (req, res) {
+app.post("/", function (req, res) {
+    console.log('here');
+    console.log(req.body);
     // req.body hosts is equal to the JSON post sent from the user
-    // This works because of our body parsing middleware
-
-    var reqbody = json.stringify(req.body);
-
-    
-
-
-
-    // Using a RegEx Pattern to remove spaces from newCharacter
-    // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
-    newcharacter.routeName = newcharacter.name.replace(/\s+/g, "").toLowerCase();
-
-    console.log(newcharacter);
-
-    characters.push(newcharacter);
-
-    res.json(newcharacter);
-
-    //read the object and put it in array
-    
-    reservation= new Reservation();
-    if(reservationsList.length<5){
-        reservationsList.push(reservation);   
-    }else{
-        waitingList.push(reservation);  
+    var reqbody = JSON.stringify(req.body);
+    reservation = new Reservation(reqbody);
+    if (reservationsList.length < 5) {
+        reservationsList.push(reservation);
+    } else {
+        waitingList.push(reservation);
     }
+    res.json(reservation);
+
 });
 
 app.listen(PORT, function () {
